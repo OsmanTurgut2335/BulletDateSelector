@@ -1,39 +1,115 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Bullet Date Selector
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A customizable Flutter widget for quickly selecting dates using a list of bullet-like quick-select buttons and an optional calendar picker.
+![Bullet Date Selector Screenshot](assets/screenshot.png)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+ By default, the widget displays a fixed list of slots (e.g., `[1, 3, 5, 7, 10, 14, 15, 30, 45]`) but can be fully customized with your own slot list and localized text.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **Fixed or Custom Slot List:** Use the default `[1, 3, 5, 7, 10, 14, 15, 30, 45]` or supply your own.
+- **Quick-Select Buttons:** Each slot corresponds to a date offset from today.
+- **Calendar Picker Integration:** Offers a fallback or alternative way to pick a date.
+- **Localization Ready:** Texts (including tooltips) adapt to supported locales (e.g., English, Turkish).
+- **Theme-Adaptive:** Leverages `Theme.of(context)` for colors and text styles by default.
+- **Highly Customizable:** Override colors, text styles, slot generation, and more.
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the following line to your `pubspec.yaml` under `dependencies`:
+
+```yaml
+dependencies:
+  bullet_date_selector: ^1.0.0
+
+```yaml
+
+Then run:
+```bash
+flutter pub get
+```bash
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
-```
+import 'package:flutter/material.dart';
+import 'package:bullet_date_selector/bullet_date_selector.dart';
 
-## Additional information
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  DateTime? _selectedDate;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Bullet Date Selector Demo'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: BulletDateSelector(
+          onDateSelected: (date) {
+            setState(() => _selectedDate = date);
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (_selectedDate != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Selected: $_selectedDate')),
+            );
+          }
+        },
+        child: const Icon(Icons.check),
+      ),
+    );
+  }
+}
+```dart
+
+## Customization
+
+Below are some optional parameters you can override:
+
+customSlotList: Provide a custom list of slot values if you don’t want the default [1, 3, 5, 7, 10, 14, 15, 30, 45].
+
+gap: Vertical space between sections. Defaults to 8.0.
+
+listHeight: The max height for the slot list. Defaults to 200.0.
+
+titleText: Custom text for the title above the calendar picker.
+
+showTitleText: Whether to show the title. Defaults to true.
+
+titleTextStyle: Override style for the title text.
+
+showHelperText: Whether to show helper text. Defaults to true.
+
+helperText: Override for the helper text.
+
+helperTextStyle: Style override for helper text.
+
+buttonColor: Button background color. Defaults to the theme’s primary color.
+
+slotTextStyle: Text style for the slot buttons.
+
+slotButtonStyle: Fully customize the ElevatedButton style for the slot buttons.
+
+dateTextStyle: Style for the selected date text.
+
+## Example Project
+Check out the example folder in this repo for a complete Flutter app demonstrating how to integrate and customize the widget.
+https://github.com/OsmanTurgut2335/BulletDateSelector/blob/main/bullet_date_selector/example/lib/main.dart
+
+## Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request on GitHub.
+
+## License
+This project is licensed under the MIT License.

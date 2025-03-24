@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 /// A customizable widget that displays a list of quick-select buttons for date selection
 /// along with a date picker. By default, it uses a fixed list of slots. If the user wishes,
 /// they can supply their own slot list.
-class CustomBulletlist extends StatefulWidget {
+class BulletDateSelector extends StatefulWidget {
   /// Callback to notify the parent when a new date is selected.
   final ValueChanged<DateTime> onDateSelected;
 
@@ -57,14 +57,14 @@ class CustomBulletlist extends StatefulWidget {
   /// Optional text style for the calendar date text.
   final TextStyle? dateTextStyle;
 
-  /// Creates a [CustomBulletlist] widget.
+  /// Creates a [BulletDateSelector] widget.
   ///
   /// The [onDateSelected] parameter is required. The other parameters have default values:
   /// - [gap] defaults to 8.0,
   /// - [listHeight] defaults to 200.0,
   /// - [showTitleText] defaults to true,
   /// - [showHelperText] defaults to true.
-  const CustomBulletlist({
+  const BulletDateSelector({
     super.key,
     required this.onDateSelected,
     this.customSlotList,
@@ -83,10 +83,10 @@ class CustomBulletlist extends StatefulWidget {
   });
 
   @override
-  State<CustomBulletlist> createState() => _CustomBulletlistState();
+  State<BulletDateSelector> createState() => _BulletDateSelectorState();
 }
 
-class _CustomBulletlistState extends State<CustomBulletlist> {
+class _BulletDateSelectorState extends State<BulletDateSelector> {
   late DateTime _selectedDueDate;
 
   // Fixed default list of slots.
