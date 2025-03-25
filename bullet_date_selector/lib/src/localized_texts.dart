@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 enum SupportedLanguage { english, turkish }
 
 /// A class that holds the localized text values.
-class LocalizedTexts {
-  final String title;
-  final String helper;
-  final String day;
-  final String tooltip;  // New field for tooltip text
+class LocalizedTexts {  // New field for tooltip text
 
   const LocalizedTexts({
     required this.title,
@@ -16,6 +12,10 @@ class LocalizedTexts {
     required this.day,
     required this.tooltip,
   });
+  final String title;
+  final String helper;
+  final String day;
+  final String tooltip;
 }
 
 /// Mapping between SupportedLanguage and their corresponding texts.

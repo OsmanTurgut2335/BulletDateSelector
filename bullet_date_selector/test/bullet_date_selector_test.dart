@@ -36,17 +36,16 @@ void main() {
 
 
   testWidgets('BulletDateSelector uses custom slot list when provided', (WidgetTester tester) async {
-    DateTime? selectedDate;
-
+    
     // Provide a custom slot list of [2, 4].
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
           body: BulletDateSelector(
             onDateSelected: (date) {
-              selectedDate = date;
+              
             },
-            customSlotList: [2, 4],
+            customSlotList: const [2, 4],
           ),
         ),
       ),

@@ -1,4 +1,3 @@
-
 import 'package:bullet_date_selector/src/localized_texts.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,7 @@ class BulletDateSelector extends StatefulWidget {
   /// Callback to notify the parent when a new date is selected.
   final ValueChanged<DateTime> onDateSelected;
 
-  /// Optional custom list of slot values 
+  /// Optional custom list of slot values
   ///  If not provided, the default list
   /// [1, 3, 5, 7, 10, 14, 15, 30, 45] is used.
   final List<int>? customSlotList;
@@ -65,8 +64,8 @@ class BulletDateSelector extends StatefulWidget {
   /// - [showTitleText] defaults to true,
   /// - [showHelperText] defaults to true.
   const BulletDateSelector({
-    super.key,
     required this.onDateSelected,
+    super.key,
     this.customSlotList,
     this.gap = 8.0,
     this.listHeight = 200.0,
@@ -123,24 +122,24 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
           height: widget.listHeight,
           child: ListView(
             shrinkWrap: true,
-            scrollDirection: Axis.vertical,
             children: [
               for (final slot in slots)
                 Padding(
                   padding: EdgeInsets.only(top: widget.gap),
-                  child: _buildSlotButton(slot,  textTheme, texts, supportedLanguage),
+                  child: _buildSlotButton(slot, textTheme, texts, supportedLanguage),
                 ),
             ],
           ),
         ),
 
         // Optional title text.
-        widget.showTitleText
-            ? Padding(
-              padding: EdgeInsets.only(top: widget.gap),
-              child: Text(widget.titleText ?? texts.title, style: widget.titleTextStyle ?? textTheme.titleMedium),
-            )
-            : const SizedBox.shrink(),
+        if (widget.showTitleText)
+          Padding(
+            padding: EdgeInsets.only(top: widget.gap),
+            child: Text(widget.titleText ?? texts.title, style: widget.titleTextStyle ?? textTheme.titleMedium),
+          )
+        else
+          const SizedBox.shrink(),
 
         // Date picker button wrapped with a tooltip.
         Row(
@@ -154,9 +153,10 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
         ),
 
         // Optional helper text.
-        widget.showHelperText
-            ? Text(widget.helperText ?? texts.helper, style: widget.helperTextStyle ?? textTheme.titleMedium)
-            : const SizedBox.shrink(),
+        if (widget.showHelperText)
+          Text(widget.helperText ?? texts.helper, style: widget.helperTextStyle ?? textTheme.titleMedium)
+        else
+          const SizedBox.shrink(),
       ],
     );
   }
@@ -175,8 +175,8 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
       widget.onDateSelected(pickedDate);
     }
   }
-  //Function to define every item of the list
 
+  //Function to define every item of the list
   Widget _buildSlotButton(
     int slot,
     TextTheme textTheme,
@@ -199,10 +199,9 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
         });
         widget.onDateSelected(newDate);
       },
-      style:
-          widget.slotButtonStyle ??
+      style: widget.slotButtonStyle ??
           ElevatedButton.styleFrom(
-          //  maximumSize: Size.fromHeight(buttonHeight),
+    
             backgroundColor: widget.buttonColor ?? Theme.of(context).colorScheme.primary,
           ),
       child: Text('$slot $dayText', style: widget.slotTextStyle ?? textTheme.titleMedium),

@@ -2,11 +2,11 @@ name: bullet_date_selector
 description: "A customizable Flutter widget for quick date selection using bullet-like quick-select buttons and an optional calendar picker."
 version: 0.0.1
 
-repository: "https://github.com/OsmanTurgut2335/BulletDateSelector"
+homepage: "https://github.com/OsmanTurgut2335/BulletDateSelector"
 issue_tracker: "https://github.com/OsmanTurgut2335/BulletDateSelector/issues"
 
 environment:
-  sdk: ^3.8.0-219.0.dev
+  sdk: ">=3.0.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -14,10 +14,12 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  
 
 
 flutter:
