@@ -105,9 +105,6 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    // For the buttons, we still use 5% of the screen height.
-    final double buttonHeight = screenHeight * 0.05;
     final slots = _generateSlots();
 
     // Get localized texts based on the current locale.
@@ -131,7 +128,7 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
               for (final slot in slots)
                 Padding(
                   padding: EdgeInsets.only(top: widget.gap),
-                  child: _buildSlotButton(slot, buttonHeight, textTheme, texts, supportedLanguage),
+                  child: _buildSlotButton(slot,  textTheme, texts, supportedLanguage),
                 ),
             ],
           ),
@@ -182,7 +179,6 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
 
   Widget _buildSlotButton(
     int slot,
-    double buttonHeight,
     TextTheme textTheme,
     LocalizedTexts texts,
     SupportedLanguage language,
@@ -206,7 +202,7 @@ class _BulletDateSelectorState extends State<BulletDateSelector> {
       style:
           widget.slotButtonStyle ??
           ElevatedButton.styleFrom(
-            maximumSize: Size.fromHeight(buttonHeight),
+          //  maximumSize: Size.fromHeight(buttonHeight),
             backgroundColor: widget.buttonColor ?? Theme.of(context).colorScheme.primary,
           ),
       child: Text('$slot $dayText', style: widget.slotTextStyle ?? textTheme.titleMedium),

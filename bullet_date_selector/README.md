@@ -21,13 +21,12 @@ Add the following line to your `pubspec.yaml` under `dependencies`:
 ```yaml
 dependencies:
   bullet_date_selector: ^1.0.0
-
-```yaml
+```
 
 Then run:
 ```bash
 flutter pub get
-```bash
+```
 
 ## Usage
 
@@ -72,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-```dart
+```
 
 ## Customization
 
