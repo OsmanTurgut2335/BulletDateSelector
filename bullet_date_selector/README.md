@@ -1,9 +1,9 @@
 # Bullet Date Selector
 
-A customizable Flutter widget for quickly selecting dates using a list of bullet-like quick-select buttons and an optional calendar picker.
 ![Bullet Date Selector Screenshot](assets/screenshot.png)
 
- By default, the widget displays a fixed list of slots (e.g., `[1, 3, 5, 7, 10, 14, 15, 30, 45]`) but can be fully customized with your own slot list and localized text.
+A customizable Flutter widget for quickly selecting dates using a list of bullet-like quick-select buttons and an optional calendar picker.
+By default, the widget displays a fixed list of slots (e.g., `[1, 3, 5, 7, 10, 14, 15, 30, 45]`) but can be fully customized with your own slot list and localized text.
 
 ## Features
 
